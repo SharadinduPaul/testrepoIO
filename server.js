@@ -9,6 +9,9 @@ const server = http.createServer(app);
 const io = socketio(server);
 
 app.use(express.static(path.join(__dirname)));
+app.get("/", function (req, res) {
+  res.redirect("index.html");
+});
 
 io.on("connection", (socket) => {
   socket.emit("msg", "welcome to first socket io app");
